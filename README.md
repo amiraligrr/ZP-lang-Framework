@@ -116,3 +116,11 @@ Version 0.1 coming soon.
 
 Built by a 15-year-old from Iran. For everyone, everywhere.
 https://amiraligrr.ir
+## ⚠️ A note from the creator
+
+Due to the current internet restrictions in Iran, maintaining this project online is not always possible.  
+We may be disconnected sometimes — but we are not gone.
+
+**We will be back soon.**
+
+This project continues — no firewall can stop an idea.
