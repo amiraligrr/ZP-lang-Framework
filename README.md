@@ -116,5 +116,5 @@ Version 0.1 coming soon.
 
 Built by a 15-year-old from Iran. For everyone, everywhere.
 https://amiraligrr.ir
----
+
 You learned to code in English. We learned to code in freedom.
