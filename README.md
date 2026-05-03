@@ -6,6 +6,8 @@
 
 Each version is stored in a separate folder so you can track progress. For example: `0-0-01` (first working prototype), `0-0-02` (multi-language support). Version 0.1 will be the first release shared online to get help from other developers.
 
+**🌐 Official Website:** [zp.amiraligrr.ir](https://zp.amiraligrr.ir) – A modern, bilingual (Persian/English) website showcasing the framework, demo, developers, and contribution guide.
+
 ---
 
 ## What is ZP?
@@ -71,6 +73,7 @@ Every language file must respond to the `"test"` command. This is used by ZP Cor
 12. Type `exit` to quit the shell
 
 ### Example Session
+
 📚 Available languages:
 
 فارسی
@@ -269,7 +272,7 @@ MIT – free for everyone, forever.
 
 - **GitHub:** https://github.com/amiraligrr/ZP-lang-Framework
 - **Issues:** https://github.com/amiraligrr/ZP-lang-Framework/issues
-- **Website:** https://amiraligrr.ir
+- **Website:** [zp.amiraligrr.ir](https://zp.amiraligrr.ir) – Main project website (Next.js, bilingual, with demo and developer pages)
 
 ---
 
@@ -281,4 +284,4 @@ cd ZP-lang-Framework
 ```
 Version 0.1 coming soon.
 
-**Built by a 15-year-old from Iran. For everyone, everywhere.**
+Built by a 15-year-old from Iran. For everyone, everywhere. 
