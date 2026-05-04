@@ -276,6 +276,27 @@ MIT – free for everyone, forever.
 
 ---
 
+## 📁 About the Web Code in `zp-webcode-backup/`
+
+Due to ongoing internet instability in Iran, the complete website code cannot be uploaded in one single commit. Instead, it is being published **gradually and transparently**.
+
+Inside the [`zp-webcode-backup/`](https://github.com/amiraligrr/ZP-lang-Framework/tree/main/zp-webcode-backup) folder, you will find the **core pages** of the official ZP website:
+- Homepage
+- Developers page  
+- Contribute page  
+- Layout and global styles  
+
+These files represent the **current live version** at [zp.amiraligrr.ir](https://zp.amiraligrr.ir).  
+The remaining parts (full static export, images, optimizations) will be added step by step as the internet connection permits.
+
+> 💡 **Why partial uploads?**  
+> A stable connection is required to push large amounts of code. This incremental approach ensures no work is lost and the project remains visible and usable at all times.
+
+**Please visit the live website to see the full design and functionality:**  
+🔗 [https://zp.amiraligrr.ir](https://zp.amiraligrr.ir)
+
+---
+
 ## Clone and Watch the Progress
 
 ```bash
@@ -284,4 +305,4 @@ cd ZP-lang-Framework
 ```
 Version 0.1 coming soon.
 
-Built by a 15-year-old from Iran. For everyone, everywhere. 
+**Built by a 15-year-old from Iran. For everyone, everywhere.**
