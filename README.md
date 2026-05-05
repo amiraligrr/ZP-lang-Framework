@@ -273,6 +273,7 @@ MIT – free for everyone, forever.
 - **GitHub:** https://github.com/amiraligrr/ZP-lang-Framework
 - **Issues:** https://github.com/amiraligrr/ZP-lang-Framework/issues
 - **Website:** [zp.amiraligrr.ir](https://zp.amiraligrr.ir) – Main project website (Next.js, bilingual, with demo and developer pages)
+-  **my website** [amiraligrr.ir](https://amiraligrr.ir) – my website)
 
 ---
 
