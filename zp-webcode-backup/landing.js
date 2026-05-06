@@ -1,4 +1,4 @@
-// app/page.tsx
+// app/page.js
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -13,6 +13,7 @@ export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [language, setLanguage] = useState('en');
   const [isMobile, setIsMobile] = useState(false);
+  const [particles, setParticles] = useState([]);
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -26,6 +27,15 @@ export default function Home() {
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
+    
+    // ایجاد ذرات فقط در سمت کلاینت (برای جلوگیری از خطای hydration)
+    setParticles(Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+      y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
+      duration: Math.random() * 10 + 5,
+      delay: Math.random() * 5,
+    })));
     
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
@@ -46,11 +56,11 @@ export default function Home() {
 
   const content = {
     en: {
-      badge: 'Under active development — v0.0.02',
+      badge: 'Under active development — v0.0.03',
       title: 'ZP',
       subtitle: 'Framework for building programming languages',
       description: 'in your mother tongue',
-      cta: 'Try Demo',
+      cta: 'Try Demo (Unavailable)',
       contribute: 'Contribute',
       developers: 'Developers',
       about: 'About',
@@ -69,14 +79,20 @@ export default function Home() {
       visionTitle: 'What We Are Building',
       visionItems: [
         { icon: '💻', text: 'Terminal-based framework — works now' },
-        { icon: '🌐', text: 'Web-based IDE — write and run in browser' },
-        { icon: '📦', text: 'Language Store — share and install languages' },
-        { icon: '📱', text: 'Native apps for desktop and mobile' },
-        { icon: '📖', text: 'Documentation in every language' },
-        { icon: '🔧', text: 'Full IDE with autocomplete and debugging' },
+        { icon: '🌐', text: 'Web-based IDE — write and run in browser (coming soon)' },
+        { icon: '📦', text: 'ZP Store — share and install languages (planned)' },
+        { icon: '📱', text: 'Native apps for desktop and mobile (future)' },
+        { icon: '📖', text: 'Documentation for every language in its own language (coming soon)' },
+        { icon: '🔧', text: 'Full IDE with autocomplete and debugging (planned)' },
       ],
+      webVersionStatus: 'Web Version Status',
+      webVersionStatusDesc: 'We are actively building the experimental web version. The online demo environment is under development and will be available soon at zp.amiraligrr.ir. Currently, the website shows the framework information, but the live coding environment is still in progress. Follow the repository for updates.',
+      documentationPlans: 'Documentation Plans',
+      documentationPlansDesc: 'Soon, every language package will have its own documentation page where users can read, learn, and write code in their own native language. The documentation will be fully bilingual and community-driven.',
+      complexCommands: 'Complex Commands Coming',
+      complexCommandsDesc: 'We are actively building support for if statements, while loops, for loops, and custom functions. The grammar parser is under development and will be released in the upcoming versions.',
       futureTitle: 'Coming Soon',
-      futureDesc: 'The framework is functional now. Within a year, we will have a complete development environment with IDE support for Windows, Linux, macOS, and mobile. Code in your mother tongue anywhere.',
+      futureDesc: 'The framework is functional now. You can test it via terminal. Within a year, we will have a complete development environment with IDE support for Windows, Linux, macOS, and mobile. Code in your mother tongue anywhere.',
       needHelp: 'We Need You',
       needHelpDesc: 'ZP grows with community contributions.',
       developerInfo: 'How to Join Developer Team',
@@ -89,11 +105,11 @@ export default function Home() {
       bottomCta: 'Build the future of programming — with your own language',
     },
     fa: {
-      badge: 'در حال توسعه — نسخه ۰.۰.۰۲',
+      badge: 'در حال توسعه — نسخه ۰.۰.۰۳',
       title: 'ZP',
       subtitle: 'فریمورک ساخت زبان برنامه‌نویسی',
       description: 'به زبان مادری خودت',
-      cta: 'نسخه آزمایشی',
+      cta: ' نسخه آزمایشی (غیرفعال)',
       contribute: 'مشارکت',
       developers: 'توسعه‌دهندگان',
       about: 'درباره',
@@ -112,14 +128,20 @@ export default function Home() {
       visionTitle: 'چه می‌سازیم',
       visionItems: [
         { icon: '💻', text: 'نسخه ترمینال — در حال کار است' },
-        { icon: '🌐', text: 'ویرایشگر تحت وب — کدنویسی در مرورگر' },
-        { icon: '📦', text: 'فروشگاه زبان — اشتراک و نصب زبان‌ها' },
-        { icon: '📱', text: 'اپلیکیشن بومی برای دسکتاپ و موبایل' },
-        { icon: '📖', text: 'مستندات به هر زبانی' },
-        { icon: '🔧', text: 'IDE کامل با اتوکامپلیت و دیباگ' },
+        { icon: '🌐', text: 'ویرایشگر تحت وب — کدنویسی در مرورگر (به زودی)' },
+        { icon: '📦', text: 'فروشگاه ZP — اشتراک و نصب زبان‌ها (در برنامه)' },
+        { icon: '📱', text: 'اپلیکیشن بومی برای دسکتاپ و موبایل (آینده)' },
+        { icon: '📖', text: 'مستندات هر زبان به زبان خودش (به زودی)' },
+        { icon: '🔧', text: 'IDE کامل با اتوکامپلیت و دیباگ (در برنامه)' },
       ],
+      webVersionStatus: 'وضعیت نسخه وب',
+      webVersionStatusDesc: 'ما در حال ساخت نسخه آزمایشی وب هستیم. محیط دمو آنلاین در حال توسعه است و به زودی در zp.amiraligrr.ir در دسترس خواهد بود. در حال حاضر، وب‌سایت اطلاعات فریمورک را نشان می‌دهد، اما محیط کدنویسی زنده هنوز در حال تکمیل است. برای اطلاع از پیشرفت‌ها، مخزن را دنبال کنید.',
+      documentationPlans: 'برنامه مستندات',
+      documentationPlansDesc: 'به زودی، هر بسته زبانی صفحه مستندات مخصوص به خود را خواهد داشت. کاربران می‌توانند به زبان مادری خود بخوانند، یاد بگیرند و کد بنویسند. مستندات کاملاً دو زبانه و مبتنی بر مشارکت جامعه خواهد بود.',
+      complexCommands: 'دستورات پیچیده در راه است',
+      complexCommandsDesc: 'ما در حال ساختن پشتیبانی از دستورات if، حلقه while، حلقه for، و توابع سفارشی هستیم. پارسر گرامر در حال توسعه است و در نسخه‌های آینده منتشر خواهد شد.',
       futureTitle: 'در راه است',
-      futureDesc: 'فریمورک همین الان کار می‌کند. ظرف یک سال، یک محیط توسعه کامل با پشتیبانی IDE برای ویندوز، لینوکس، مک و موبایل خواهیم داشت. به زبان مادری خودت، هر جا که هستی کد بزن.',
+      futureDesc: 'فریمورک همین الان کار می‌کند. می‌توانی آن را از طریق ترمینال تست کنی. ظرف یک سال، یک محیط توسعه کامل با پشتیبانی IDE برای ویندوز، لینوکس، مک و موبایل خواهیم داشت. به زبان مادری خودت، هر جا که هستی کد بزن.',
       needHelp: 'به تو نیاز داریم',
       needHelpDesc: 'ZP با مشارکت جامعه رشد می‌کند.',
       developerInfo: 'چطور به تیم توسعه‌دهندگان بپیوندی',
@@ -138,36 +160,52 @@ export default function Home() {
   return (
     <div ref={containerRef} className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
       
-      {/* Animated Background */}
+      {/* Animated Background - بدون ذرات متحرک برای جلوگیری از hydration mismatch */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent" />
         <div className="absolute inset-0" style={{
           backgroundImage: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(168, 85, 247, 0.08), transparent 50%)`,
         }} />
-        
-        {/* Floating particles */}
-        <div className="absolute inset-0">
-          {[...Array(50)].map((_, i) => (
+      </div>
+
+      {/* Static particles without animation for hydration */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        {particles.map((part, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-purple-400/20 rounded-full"
+            style={{
+              x: part.x,
+              y: part.y,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Floating animated particles - فقط در سمت کلاینت رندر میشه */}
+      {typeof window !== 'undefined' && (
+        <div className="fixed inset-0 z-0 pointer-events-none">
+          {particles.map((part, i) => (
             <motion.div
-              key={i}
+              key={`animated-${i}`}
               className="absolute w-1 h-1 bg-purple-400/20 rounded-full"
               initial={{
-                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-                y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
+                x: part.x,
+                y: part.y,
               }}
               animate={{
                 y: [null, -50, -100],
                 opacity: [0, 0.5, 0],
               }}
               transition={{
-                duration: Math.random() * 10 + 5,
+                duration: part.duration,
                 repeat: Infinity,
-                delay: Math.random() * 5,
+                delay: part.delay,
               }}
             />
           ))}
         </div>
-      </div>
+      )}
 
       {/* Language Switcher - Top Right */}
       <div className="fixed top-4 right-4 z-50 flex gap-2">
@@ -290,11 +328,11 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4 mt-12 justify-center w-full max-w-md mx-auto"
           >
-            <Link href="/demo" className="flex-1 flex justify-center">
+            <Link href="/demo" className="flex-1 flex justify-center cursor-not-allowed pointer-events-none">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl font-semibold text-lg shadow-lg shadow-purple-500/25"
+                className="w-full px-8 py-4 bg-gradient-to-r from-purple-700 to-pink-500 rounded-xl font-semibold text-lg shadow-lg shadow-purple-500/25"
               >
                 🚀 {t.cta}
               </motion.button>
@@ -345,6 +383,75 @@ export default function Home() {
                 </h2>
                 <p className="text-gray-300 leading-relaxed">
                   {t.whatIsDesc}
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Web Version Status Section */}
+        <section className="relative z-10 py-16 px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="backdrop-blur-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl p-6 md:p-8 border border-blue-500/30"
+            >
+              <div className="text-center">
+                <div className="text-5xl mb-4">🌐</div>
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                  {t.webVersionStatus}
+                </h2>
+                <p className="text-gray-300 leading-relaxed">
+                  {t.webVersionStatusDesc}
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Documentation Plans Section */}
+        <section className="relative z-10 py-16 px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="backdrop-blur-xl bg-gradient-to-r from-green-500/10 to-teal-500/10 rounded-2xl p-6 md:p-8 border border-green-500/30"
+            >
+              <div className="text-center">
+                <div className="text-5xl mb-4">📖</div>
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-green-400 to-teal-500 bg-clip-text text-transparent">
+                  {t.documentationPlans}
+                </h2>
+                <p className="text-gray-300 leading-relaxed">
+                  {t.documentationPlansDesc}
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Complex Commands Section */}
+        <section className="relative z-10 py-16 px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="backdrop-blur-xl bg-gradient-to-r from-orange-500/10 to-red-500/10 rounded-2xl p-6 md:p-8 border border-orange-500/30"
+            >
+              <div className="text-center">
+                <div className="text-5xl mb-4">⚙️</div>
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
+                  {t.complexCommands}
+                </h2>
+                <p className="text-gray-300 leading-relaxed">
+                  {t.complexCommandsDesc}
                 </p>
               </div>
             </motion.div>
@@ -429,7 +536,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* What We Are Building */}
+        {/* Vision Section */}
         <section className="relative z-10 py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -458,7 +565,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Coming Soon */}
+        {/* What We Are Building Now */}
         <section className="relative z-10 py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -617,7 +724,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className={`relative z-10 py-16 px-4 text-center border-t border-white/10 ${isMobile ? 'mb-16' : ''}`}>
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto" style={{ position: 'relative', zIndex: 15 }}>
           <p className="text-base md:text-lg text-purple-300 mb-4 font-medium">{t.bottomCta}</p>
           <p className="text-gray-400 text-sm mb-2">{t.footer}</p>
           <p className="text-gray-500 text-xs">{t.quote}</p>
