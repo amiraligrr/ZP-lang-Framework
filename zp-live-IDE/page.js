@@ -26,12 +26,7 @@ async function runOnBackend(commands) {
 
 export default function Home() {
   // ---------- ادیتور ----------
-  const [code, setCode] = useState(`بنویس "سلام دنیا"
-متغیر نام = "امیرعلی"
-اگر نام == "امیرعلی" باشد
-    بنویس "سلام استاد"
-در غیر این صورت
-    بنویس "سلام کاربر"
+  const [code, setCode] = useState(`بنویس زنده باد زرشک پلو
 `);
   const [lineCount, setLineCount] = useState(1);
   const textareaRef = useRef(null);
