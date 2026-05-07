@@ -8,7 +8,7 @@ Each version is stored in a separate folder so you can track progress. For examp
 
 Official Website: zp.amiraligrr.ir – A modern, bilingual (Persian/English) website showcasing the framework, demo, developers, and contribution guide.
 
-My Website: amiraligrr.ir
+zp-webshte : http://zp.amiraligrr.ir
 
 ---
 
@@ -50,7 +50,7 @@ This means that when you create a new language package, you will not just define
 
 ### Current State of Web Version
 
-We are actively working on building the experimental web version. The full online demo is under development and will be available soon at zp.amiraligrr.ir. Currently, the website shows the framework information, but the live demo environment is still in progress.
+We are actively working on building the experimental web version. The full online demo is under development and will be available soon at http://zp.amiraligrr.ir. Currently, the website shows the framework information, but the live demo environment is still in progress.
 
 ---
 
@@ -309,8 +309,8 @@ MIT – free for everyone, forever.
 
 GitHub: https://github.com/amiraligrr/ZP-lang-Framework
 Issues: https://github.com/amiraligrr/ZP-lang-Framework/issues
-Website: zp.amiraligrr.ir – Main project website (Next.js, bilingual, with demo and developer pages)
-My website: amiraligrr.ir
+Website: http://zp.amiraligrr.ir – Main project website (Next.js, bilingual, with demo and developer pages)
+My website: https://amiraligrr.ir
 
 ---
 
@@ -335,10 +335,10 @@ We are currently working hard on building the experimental web version of ZP. Th
 ---
 
 ## Clone and Watch the Progress
-
+```bash
 git clone https://github.com/amiraligrr/ZP-lang-Framework
 cd ZP-lang-Framework
-
+```
 Version 0.1 coming soon.
 
 Built by a 16-year-old from Iran. For everyone, everywhere.
