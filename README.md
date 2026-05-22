@@ -343,4 +343,4 @@ Version 0.1 coming soon.
 
 Built by a 16-year-old from Iran. For everyone, everywhere.
 ---
-for net status in Iran I can1t connect to github I will come back soon!
+for net status in Iran I can1t connect to github I will come back soon! 
