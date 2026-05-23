@@ -341,6 +341,20 @@ cd ZP-lang-Framework
 ```
 Version 0.1 coming soon.
 
-Built by a 16-year-old from Iran. For everyone, everywhere.
----
-for net status in Iran I can1t connect to github I will come back soon! 
+## Development Status (23 May 2026)
+
+**Internet situation in Iran is unstable.**  
+GitHub connection drops constantly. Even installing packages or pushing commits is often impossible. Local development continues, but syncing with the remote repository happens when the connection allows.
+
+**Personal status:**  
+Currently busy with end‑term school exams. Progress is slower, but not stopped.
+
+**Next plan (version 0.0.04):**
+- Full core rewrite (support for loops, conditionals, functions)
+- Standardised language package format (folder‑based, each package includes its own assets, docs, and core logic)
+- Move toward practical, real‑world usable languages
+
+The build never stops. Even if the internet does.
+--
+**Built by a 16-year-old from Iran. For everyone, everywhere.**
+
