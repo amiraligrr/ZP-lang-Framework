@@ -353,7 +353,50 @@ Currently busy with end‑term school exams. Progress is slower, but not stopped
 - Full core rewrite (support for loops, conditionals, functions)
 - Standardised language package format (folder‑based, each package includes its own assets, docs, and core logic)
 - Move toward practical, real‑world usable languages
+---
+**Update - 29 May**
+## 🛠️ What’s coming next (v0.0.04)
 
+This update is a **core rewrite**.  
+I’ve learned a lot from versions 0.0.02 and 0.0.03, but the current core has limits. It cannot support loops, conditions, or persistent data without becoming a mess. So I’m rebuilding it.
+
+**What will change:**
+
+| Feature | What it means |
+|---------|----------------|
+| Loops (`for`, `while`) | You will be able to repeat a block of code. |
+| Conditions (`if`, `else`) | Real branching inside your language. |
+| Persistent variables | Store data across different runs (using a simple database). |
+| Smarter block handling | The core will understand “from line X to line Y” – needed for loops and conditions. |
+
+**What will NOT break:**
+
+Language packs written for v0.0.02 and v0.0.03 will still work (backward compatibility).  
+The current API endpoints (`/run`, `/reset`, etc.) will remain the same.  
+The web IDE will not change in this version – it stays Persian-only for now.
+
+**Why is it taking time?**
+
+I have school exams right now. I’m not sitting in a dark room coding 24/7.  
+After exams, I will finish the rewrite and test it.  
+
+**When will it be released?**
+
+Probably during the **first 20 days of Tir (late June / early July 2026)**.  
+I don’t want to promise a fixed date – but that’s the target window.
+
+**What about the new folder-based language pack format (with images, docs, IDE configs)?**
+
+That will come **after** v0.0.04, not together with it. I will release it as a separate update.
+
+---
+
+### 🧪 No fake promises
+
+I haven’t received any external feedback yet (no one has tested v0.0.03 and told me what they think). That’s fine. This rewrite is based on my own needs and the direction I want ZP to go. If you have tested it and have real feedback, I’d love to hear it.
+
+— Amirali, 16, Iran  
+*Still building. One step at a time.*
 The build never stops. Even if the internet does.
 --
 **Built by a 16-year-old from Iran. For everyone, everywhere.**
