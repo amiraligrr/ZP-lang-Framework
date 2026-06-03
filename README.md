@@ -394,7 +394,9 @@ That will come **after** v0.0.04, not together with it. I will release it as a s
 ### 🧪 No fake promises
 
 I haven’t received any external feedback yet (no one has tested v0.0.03 and told me what they think). That’s fine. This rewrite is based on my own needs and the direction I want ZP to go. If you have tested it and have real feedback, I’d love to hear it.
-
+---
+**4 June 2026** – Preparing for 0.0.04 rewrite. Very low free time (8am–8pm school). Progress will be slow until exams finish.
+---
 — Amirali, 16, Iran  
 **Still building. One step at a time.**
 The build never stops. Even if the internet does.
