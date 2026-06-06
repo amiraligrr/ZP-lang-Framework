@@ -22,7 +22,7 @@ No English required. No compiler experience needed.
 
 ## What does ZP stand for?
 
-ZP stands for Zereshk Polo – a traditional Persian dish made with rice, barberries, and chicken.
+ZP stands for Zereshk Polo(زرشک پلو) – a traditional Persian dish made with rice, barberries, and chicken.
 
 Why name a programming framework after food? Because like a good meal, a programming language should feel familiar, warm, and accessible to everyone. Zereshk Polo is a dish many Iranians grow up with. Similarly, ZP aims to make programming feel like something you already know by letting you code in your mother tongue.
 
