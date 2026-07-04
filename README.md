@@ -1,87 +1,92 @@
- # ZP-lang-Framework  
- 
+# ZP-lang Framework
+
 Build your own programming language using your mother tongue. Then share it.
 
-Status: Under active development. Version 0.1 is the first public release goal. Current internal version is 0.0.03.
+Status: Under active development. Version 0.1 is the first public release goal.
+Current internal version: 0.0.04 (Kernel rewrite in progress).
 
-Each version is stored in a separate folder so you can track progress. For example: 0-0-01 (first working prototype), 0-0-02 (multi-language support), 0-0-03 (web IDE + API server). Version 0.1 will be the first release shared online to get help from other developers.
+Each version is stored in a separate folder so you can track progress.
+Example: 0-0-01 (first prototype), 0-0-02 (multi-language support),
+0-0-03 (Web IDE + API server).
 
-Official Website: zp.amiraligrr.ir – A modern, bilingual (Persian/English) website showcasing the framework, demo, developers, and contribution guide.
+Official Website: https://zp.amiraligrr.ir
+GitHub: https://github.com/amiraligrr/zp-lang-framework
 
-zp-webshte : http://zp.amiraligrr.ir
-
----
 
 ## What is ZP?
 
-ZP is a framework that lets anyone create a custom programming language using their own native language keywords. The code you write in your language gets translated to Python and runs.
+ZP is a framework that lets anyone create a custom programming language
+using their own native language keywords. The code you write gets translated
+to Python and runs.
 
 No English required. No compiler experience needed.
 
----
 
 ## What does ZP stand for?
 
-ZP stands for Zereshk Polo(زرشک پلو) – a traditional Persian dish made with rice, barberries, and chicken.
+ZP stands for Zereshk Polo (زرشک پلو) — a traditional Persian dish made with
+rice, barberries, and chicken.
 
-Why name a programming framework after food? Because like a good meal, a programming language should feel familiar, warm, and accessible to everyone. Zereshk Polo is a dish many Iranians grow up with. Similarly, ZP aims to make programming feel like something you already know by letting you code in your mother tongue.
+Why name a programming framework after food?
+Because like a good meal, a programming language should feel familiar, warm,
+and accessible to everyone. Zereshk Polo is a dish many Iranians grow up with.
+Similarly, ZP aims to make programming feel like something you already know
+by letting you code in your mother tongue.
 
-Some people might find the name unusual or funny. That is exactly the point. Programming should not feel like a serious exclusive club. It should be for everyone. The name helps break the ice and reminds people that technology can be warm and human too.
+Some people might find the name unusual or funny. That is exactly the point.
+Programming should not feel like a serious, exclusive club. It should be for everyone.
+The name helps break the ice and reminds people that technology can be warm and human too.
 
----
 
-## How Version 0.0.03 Works (Current)
+## How Version 0.0.03 Works (Current Stable)
 
 ### Architecture Overview
 
-ZP now consists of three main components:
+ZP consists of three main components:
 
 1. ZP Core – Python framework that loads language files and processes commands
 2. Flask API Server – REST API that exposes ZP functionality over HTTP
 3. Web IDE – Next.js frontend that communicates with the API server
 
-### Important Note About Current IDE
+### Language File Format
 
-In the current version (0.0.03), the Web IDE is specifically built for the Persian language only. The editor, suggestions, and terminal interface are hardcoded for Persian keywords.
-
-However, in future versions, we will make the IDE fully dynamic. The language package itself will control everything about the IDE – from the run commands to the suggestion lists, syntax highlighting rules, and the entire terminal behavior. Each language will be able to define its own IDE experience, and ZP Core will load and apply those settings automatically.
-
-This means that when you create a new language package, you will not just define keywords. You will also define how the IDE should behave for your language. The IDE becomes an extension of the language itself. This feature is planned for versions after 0.1.
-
-### Current State of Web Version
-
-We are actively working on building the experimental web version. The full online demo is under development and will be available soon at http://zp.amiraligrr.ir. Currently, the website shows the framework information, but the live demo environment is still in progress.
-
----
-
-## Core Concept
-
-ZP Core scans the current directory for language files. Each language is a separate Python file with a specific naming format: lang-zp-{language_name}.py
-
-### Language File Requirements
+Each language is a separate Python file named: lang-zp-{language_name}.py
 
 Each language file must contain:
-- name (display name shown to users)
-- version (language version number)
-- author (creator name)
+
+- name – display name shown to users
+- version – language version number
+- author – creator name
 - process(command, variables) function
 
 ### The Process Function
 
-The process function is the heart of each language. It receives:
-- command: the user input as a string (example: بنویس سلام)
+The process function receives:
+- command: user input as a string (example: بنویس سلام)
 - variables: a dictionary containing all previously defined variables
 
 It must return:
-- status: either OK or ERROR
+- status: either "OK" or "ERROR"
 - message: the output text to show the user
 - updated_variables: the variables dictionary (may be unchanged or modified)
 
 ### Special Test Command
 
-Every language file must respond to the test command. This is used by ZP Core to verify the language works.
+Every language file must respond to the "test" command. This is used by
+ZP Core to verify the language works.
 
----
+### Keywords in Version 0.0.03
+
+Persian:
+- بنویس – print / output text
+- متغیر – variable assignment (form: متغیر name = value)
+
+English:
+- say – print / output text
+- set – variable assignment (form: set name = value)
+
+Note: More keywords (if, while, for, functions) will be added in version 0.0.04.
+
 
 ## Complete Workflow (with Web IDE)
 
@@ -92,130 +97,13 @@ Every language file must respond to the test command. This is used by ZP Core to
 5. Backend processes commands through ZP Core and returns results
 6. Frontend displays output in the terminal panel
 
-### API Endpoints
+### API Endpoints (v0.0.03)
 
-POST /run - Execute commands (send JSON with commands)
-POST /reset - Reset all variables
-GET /languages - List available languages
-POST /reload - Reload language files
+POST /run – Execute commands (send JSON with commands)
+POST /reset – Reset all variables
+GET /languages – List available languages
+POST /reload – Reload language files
 
----
-
-## Important Syntax Note
-
-In the current version (0.0.03), variable assignment uses متغیر (Persian for variable) followed by the name and value with an equals sign. Example: متغیر نام = امیرعلی
-
-The word متغیر itself is the command. The name and value come after it. This means متغیر plays the role of set or var in other languages.
-
-### Current keyword support
-
-Persian:
-- بنویس - print / output text
-- متغیر - variable assignment (form: متغیر name = value)
-
-English:
-- say - print / output text
-- set - variable assignment (form: set name = value)
-
-More keywords like if, while, for, and function definitions will be added in future versions.
-
----
-
-## Adding a New Language
-
-To add a new language to ZP:
-
-1. Create a new file named lang-zp-yourlanguage.py
-2. Define name, version, and author variables
-3. Define a process(command, variables) function
-4. Support the test command (must return OK)
-5. Implement your language's keywords and logic
-6. Place the file in the same folder as zp_api.py
-7. Restart the Flask server or call the /reload endpoint
-
-No changes to ZP Core are required. This plugin architecture makes it easy to add, share, and download language files.
-
----
-
-## Future: Dynamic IDE Controlled by Language Packages
-
-Currently, the IDE is built specifically for Persian. But our vision for future versions (after 0.1) is much bigger:
-
-Each language package will be able to define:
-- The list of keywords for autocomplete suggestions
-- The syntax highlighting rules (colors, patterns)
-- Special run commands specific to that language
-- How the terminal panel behaves
-- Error message formats in the native language
-- Example codes and snippets
-
-When you switch languages in the IDE, everything will change dynamically – the editor behavior, suggestions, and even the UI text will adapt to that language. The language package will completely control the IDE experience.
-
-This means that as a language creator, you will not just define how your language translates to Python. You will also define how programmers experience your language inside the ZP Web IDE. We are actively working on this feature.
-
----
-
-## Version History
-
-0-0-01 (First prototype)
-- Basic single-language interpreter for Persian
-- Hard-coded commands (no plugin system)
-- Variables supported
-- Terminal-based interaction
-- Proof of concept
-
-0-0-02 (Multi-language support)
-- Multi-language plugin system
-- Auto-discovery of language files
-- Language menu for user selection
-- Test command for validation
-- Persian and English language files included
-- Clean separation between core and languages
-- Easy to add new languages without modifying core code
-
-0-0-03 (Current version – Web IDE + API)
-- Flask REST API server
-- Next.js web-based IDE
-- Terminal panel with command execution
-- Dark/light theme support
-- RTL text support for Persian
-- Auto-complete for keywords (Persian only)
-- Resizable terminal panel
-- Output display with execution time
-- Detail modal for command results
-- Note: IDE is currently Persian-only, dynamic IDE coming in future versions
-
-0.1 (First public release goal)
-- Publish online for community use
-- Invite contributors to add more languages
-- Basic grammar parser for more complex commands
-- Better error handling
-- Complete documentation website
-- Experimental web version live on zp.amiraligrr.ir
-
-Future Versions (0.2 and beyond)
-- JSON-based grammar definitions (no Python coding required for new languages)
-- Fully dynamic IDE controlled by language packages
-- ZP Store for sharing languages
-- Package manager to install languages from the store
-- Full programming language features (loops, conditionals, functions)
-- Performance improvements
-- Community contributions
-
----
-
-## Tech Stack
-
-Core language: Python 3.12+
-API Framework: Flask + Flask-CORS
-Web Frontend: Next.js 16 (React)
-Styling: Tailwind CSS
-Code Editor: Custom textarea with syntax highlighting
-Parsing (planned): Lark or PLY
-Target output: Python AST
-Execution: Python interpreter
-
----
 
 ## Running the Project
 
@@ -240,11 +128,25 @@ The IDE will be available at http://localhost:3000
 3. View output in the terminal panel
 4. Click Details to see per-command execution results
 
----
 
-## Limitations of Current Version
+## Adding a New Language (v0.0.03)
 
-The current version only handles single commands line by line. It does not yet support:
+1. Create a file named lang-zp-yourlanguage.py
+2. Define name, version, and author variables
+3. Define a process(command, variables) function
+4. Support the "test" command (must return OK)
+5. Implement your language's keywords and logic
+6. Place the file in the same folder as zp_api.py
+7. Restart the Flask server or call the /reload endpoint
+
+No changes to ZP Core are required. This plugin architecture makes it easy
+to add, share, and download language files.
+
+
+## Limitations of Version 0.0.03
+
+The current version only handles single commands line by line.
+It does not yet support:
 
 - Multi-line programs
 - Nested commands (if statements containing print)
@@ -253,37 +155,140 @@ The current version only handles single commands line by line. It does not yet s
 - Code blocks with indentation
 - File input/output
 
-Also, the Web IDE currently only works with Persian. Other languages can be used through the API or terminal, but the IDE interface (suggestions, buttons, labels) is Persian-specific. Dynamic IDE support is coming in future versions.
+Also, the Web IDE currently only works with Persian. Other languages can be
+used through the API or terminal, but the IDE interface (suggestions, buttons,
+labels) is Persian-specific. Dynamic IDE support is coming in future versions.
 
-These features are planned for future versions.
 
----
+## Version History
 
-## Why Version 0.1 Matters
+### 0-0-01 (First Prototype)
+- Basic single-language interpreter for Persian
+- Hard-coded commands (no plugin system)
+- Variables supported
+- Terminal-based interaction
+- Proof of concept
 
-Version 0.1 will be the first release shared publicly online. The goal is to get help from other developers. Building ZP alone is possible, but building it with a community is faster and better. Once v0.1 is out, others can:
+### 0-0-02 (Multi-Language Support)
+- Multi-language plugin system
+- Auto-discovery of language files
+- Language menu for user selection
+- Test command for validation
+- Persian and English language files included
+- Clean separation between core and languages
+- Easy to add new languages without modifying core code
 
-- Test the framework on different systems
-- Add support for their native languages
-- Report bugs and suggest improvements
-- Write documentation and examples
-- Share the project with their networks
+### 0-0-03 (Current – Web IDE + API)
+- Flask REST API server
+- Next.js web-based IDE
+- Terminal panel with command execution
+- Dark/light theme support
+- RTL text support for Persian
+- Auto-complete for keywords (Persian only)
+- Resizable terminal panel
+- Output display with execution time
+- Detail modal for command results
+- Note: IDE is currently Persian-only, dynamic IDE coming in future versions
 
-This is why reaching v0.1 is an important milestone, even though it will not be perfect.
 
----
+## What's Coming Next: Version 0.0.04 (Kernel Rewrite)
+
+This is a major update currently in progress. The current core has limits —
+it cannot support loops, conditions, or persistent data without becoming messy.
+We are rebuilding it from the ground up.
+
+### New Features in 0.0.04
+
+- Loops (for, while) – repeat blocks of code
+- Conditions (if, else) – real branching inside your language
+- Persistent variables – store data across different runs
+- Smarter block handling – the core understands "from line X to line Y"
+- Multi-language error messages – each language pack defines its own
+- Automated dependency checking – Python version, pip packages, system packages
+- Modular kernel architecture – cleaner and more extensible
+
+### What Will NOT Break
+
+- Language packs written for v0.0.02 and v0.0.03 will still work (backward compatibility)
+- The current API endpoints (/run, /reset, etc.) will remain the same
+- The Web IDE will not change in this version – it stays Persian-only for now
+
+### Folder-Based Language Packs (After 0.0.04)
+
+After the kernel rewrite, we will introduce a new format where each language
+pack is a folder containing:
+- Core logic (Python)
+- Documentation and examples
+- Images and assets
+- IDE configuration (for future dynamic IDE)
+
+This will come as a separate update after v0.0.04.
+
 
 ## Roadmap Summary
 
 0-0-01: First working prototype (single language)
 0-0-02: Multi-language plugin system
-0-0-03: Web IDE + API (current - Persian IDE only)
-0.1: First public release – invite contributors, experimental web version live
-0.2: JSON language definitions, dynamic IDE controlled by language packages, better errors
-0.3: ZP Store, package manager, docs site
+0-0-03: Web IDE + API (current — Persian IDE only)
+0-0-04: Kernel rewrite (loops, conditions, persistent variables) — in progress
+0.1: First public release – invite contributors, experimental web version
+0.2: JSON language definitions, dynamic IDE controlled by language packs
+0.3: ZP Store, package manager, documentation site
 0.4+: Advanced features, community growth
 
----
+
+## Development Status (July 2026)
+
+School exams have finished, but upcoming robotics competitions and other
+projects may slow down progress. Development continues, but at a steadier pace.
+
+**Current focus:**
+- Completing the 0.0.04 kernel rewrite
+- Testing block handling and conditionals
+- Preparing for the first public release (v0.1)
+
+**Internet situation in Iran is unstable.** GitHub connection drops constantly.
+Even installing packages or pushing commits is often impossible. Local development
+continues, but syncing with the remote repository happens when the connection allows.
+
+The build never stops. Even if the internet does.
+
+
+## Online Demo · The Challenge
+
+We want to provide an online demo where users can try ZP directly in their browser.
+However, this requires a Python server to run the code and return results.
+Setting up a secure, stable server takes time and effort.
+
+We are exploring alternative solutions that would allow users to run the framework
+locally with minimal setup. For now, the easiest way is to clone the repository
+and run each version folder directly.
+
+For non-technical users who are not familiar with GitHub or terminal, we are
+working on making the process simpler in future updates.
+
+
+## What's Coming in the Future
+
+- Dedicated domain for ZP-lang (Zereshk Polo) – we are securing it
+- Full documentation pages (planned for mid-2027)
+- Language pack store – share and download languages
+- Integrated development environment for ZP languages
+- Easier installation for non-technical users
+- Community-driven language development
+
+
+## Tech Stack
+
+Core language: Python 3.12+
+API Framework: Flask + Flask-CORS
+Web Frontend: Next.js 16 (React)
+Styling: Tailwind CSS
+Code Editor: Custom textarea with syntax highlighting
+Parsing (planned): Lark or PLY
+Target output: Python AST
+Execution: Python interpreter
+
 
 ## Contributing
 
@@ -297,109 +302,48 @@ You can help once v0.1 is released:
 - Build language files for different use cases
 - Help build the dynamic IDE system
 
----
 
 ## License
 
 MIT – free for everyone, forever.
 
----
 
 ## Links
 
 GitHub: https://github.com/amiraligrr/ZP-lang-Framework
 Issues: https://github.com/amiraligrr/ZP-lang-Framework/issues
-Website: http://zp.amiraligrr.ir – Main project website (Next.js, bilingual, with demo and developer pages)
+Website: https://zp.amiraligrr.ir
 My website: https://amiraligrr.ir
 
----
+
+## Clone and Watch the Progress
+
+git clone https://github.com/amiraligrr/ZP-lang-Framework
+cd ZP-lang-Framework
+
+Version 0.1 coming soon.
+
 
 ## About the Web Code in zp-webcode-backup
 
-Due to ongoing internet instability in Iran, the complete website code cannot be uploaded in one single commit. Instead, it is being published gradually and transparently.
+Due to ongoing internet instability in Iran, the complete website code cannot
+be uploaded in one single commit. Instead, it is being published gradually
+and transparently.
 
-Inside the zp-webcode-backup folder, you will find the core pages of the official ZP website: Homepage, Developers page, Contribute page, Layout and global styles.
+Inside the zp-webcode-backup folder, you will find the core pages of the
+official ZP website: Homepage, Developers page, Contribute page, Layout
+and global styles.
 
-These files represent the current live version at zp.amiraligrr.ir. The remaining parts (full static export, images, optimizations) will be added step by step as the internet connection permits.
+These files represent the current live version at zp.amiraligrr.ir.
+The remaining parts will be added step by step as the internet connection permits.
 
-Why partial uploads? A stable connection is required to push large amounts of code. This incremental approach ensures no work is lost and the project remains visible and usable at all times.
+Please visit the live website to see the full design and functionality:
+https://zp.amiraligrr.ir
 
-Please visit the live website to see the full design and functionality: https://zp.amiraligrr.ir
 
----
+— Amirali Granmayeh, 16, Iran
 
-## We Are Building the Experimental Web Version
-
-We are currently working hard on building the experimental web version of ZP. The online demo environment is under active development. Once ready, you will be able to try ZP directly in your browser without installing anything. Follow the repository and the website for updates.
-
----
-
-## Clone and Watch the Progress
-```bash
-git clone https://github.com/amiraligrr/ZP-lang-Framework
-cd ZP-lang-Framework
-```
-Version 0.1 coming soon.
-
-## Development Status (23 May 2026)
-
-**Internet situation in Iran is unstable.**  
-GitHub connection drops constantly. Even installing packages or pushing commits is often impossible. Local development continues, but syncing with the remote repository happens when the connection allows.
-
-**Personal status:**  
-Currently busy with end‑term school exams. Progress is slower, but not stopped.
-
-**Next plan (version 0.0.04):**
-- Full core rewrite (support for loops, conditionals, functions)
-- Standardised language package format (folder‑based, each package includes its own assets, docs, and core logic)
-- Move toward practical, real‑world usable languages
----
-**Update - 29 May**
-## 🛠️ What’s coming next (v0.0.04)
-
-This update is a **core rewrite**.  
-I’ve learned a lot from versions 0.0.02 and 0.0.03, but the current core has limits. It cannot support loops, conditions, or persistent data without becoming a mess. So I’m rebuilding it.
-
-**What will change:**
-
-| Feature | What it means |
-|---------|----------------|
-| Loops (`for`, `while`) | You will be able to repeat a block of code. |
-| Conditions (`if`, `else`) | Real branching inside your language. |
-| Persistent variables | Store data across different runs (using a simple database). |
-| Smarter block handling | The core will understand “from line X to line Y” – needed for loops and conditions. |
-
-**What will NOT break:**
-
-Language packs written for v0.0.02 and v0.0.03 will still work (backward compatibility).  
-The current API endpoints (`/run`, `/reset`, etc.) will remain the same.  
-The web IDE will not change in this version – it stays Persian-only for now.
-
-**Why is it taking time?**
-
-I have school exams right now. I’m not sitting in a dark room coding 24/7.  
-After exams, I will finish the rewrite and test it.  
-
-**When will it be released?**
-
-Probably during the **first 20 days of Tir (late June / early July 2026)**.  
-I don’t want to promise a fixed date – but that’s the target window.
-
-**What about the new folder-based language pack format (with images, docs, IDE configs)?**
-
-That will come **after** v0.0.04, not together with it. I will release it as a separate update.
-
----
-
-### 🧪 No fake promises
-
-I haven’t received any external feedback yet (no one has tested v0.0.03 and told me what they think). That’s fine. This rewrite is based on my own needs and the direction I want ZP to go. If you have tested it and have real feedback, I’d love to hear it.
----
-**4 June 2026** – Preparing for 0.0.04 rewrite. Very low free time (8am–8pm school). Progress will be slow until exams finish.
----
-— Amirali, 16, Iran  
-**Still building. One step at a time.**
+Still building. One step at a time.
 The build never stops. Even if the internet does.
----
-**Built by a 16-year-old from Iran. For everyone, everywhere.**
 
+Built by a 16-year-old from Iran. For everyone, everywhere.
